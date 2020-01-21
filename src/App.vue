@@ -6,7 +6,9 @@
                 <hr>
                 <button class="btn btn-primary" @click="show = !show">Show Alert</button>
                 <br><br>
-                <div class="alert alert-info" v-if="show">This is some Info</div>
+                <transition>
+                    <div class="alert alert-info" v-if="show">This is some Info</div>
+                </transition>
             </div>
         </div>
     </div>
