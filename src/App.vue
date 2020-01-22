@@ -11,7 +11,7 @@
                     <div class="alert alert-info" v-if="show">Fade Animation</div>
                 </transition>
                 <!-- Add animation type to prevent css conflict -->
-                <transition name="slide">
+                <transition name="slide" type="animation">
                     <div class="alert alert-info" v-if="show">Fade and Slide Animation</div>
                 </transition>
             </div>
@@ -71,7 +71,7 @@
 
     .slide-leave-active {
         animation: slide-out 1s ease-out forwards;
-        transition: opacity 1s;
+        transition: opacity 3s;
         opacity: 0;
     }
 
