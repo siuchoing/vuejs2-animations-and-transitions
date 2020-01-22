@@ -8,7 +8,7 @@
                 <br><br>
                 <!-- Only one element for transition-->
                 <transition name="fade">
-                    <div class="alert alert-info" v-if="show">This is some Info</div>
+                    <div class="alert alert-info" v-if="show">Fade Animation</div>
                 </transition>
             </div>
         </div>
