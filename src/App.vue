@@ -15,7 +15,10 @@
                     <div class="alert alert-info" v-if="show">Fade and Slide Animation</div>
                 </transition>
                 <!-- add the appear attribute to do this smoothly animates -->
-                <transition name="fade" appear>
+                <transition
+                        enter-active-class="animated bounce"
+                        leave-active-class="animated shake"
+                >
                     <div class="alert alert-info" v-if="show">Fade Animation</div>
                 </transition>
             </div>
