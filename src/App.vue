@@ -8,11 +8,15 @@
                 <br><br>
                 <!-- Only one element for transition, default transition type-->
                 <transition name="fade">
-                    <div class="alert alert-info" v-show="show">Fade Animation</div>
+                    <div class="alert alert-info" v-show="show">Fade transition</div>
                 </transition>
                 <!-- Add animation type to prevent css conflict -->
                 <transition name="slide" type="animation">
                     <div class="alert alert-info" v-if="show">Fade and Slide Animation</div>
+                </transition>
+                <!-- add the appear attribute to do this smoothly animates -->
+                <transition name="fade" appear>
+                    <div class="alert alert-info" v-if="show">Fade Animation</div>
                 </transition>
             </div>
         </div>
@@ -23,7 +27,7 @@
     export default {
         data() {
             return {
-                show: false
+                show: true
             }
         }
     }
