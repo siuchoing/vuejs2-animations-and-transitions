@@ -12,7 +12,7 @@
                 </transition>
                 <!-- Add animation type to prevent css conflict -->
                 <transition name="slide">
-                    <div class="alert alert-info" v-if="show">Slide Animation</div>
+                    <div class="alert alert-info" v-if="show">Fade and Slide Animation</div>
                 </transition>
             </div>
         </div>
@@ -60,15 +60,19 @@
     }
 
     .slide-enter {
+        opacity: 0;
         /*transform: translateY(20px);*/
     }
 
     .slide-enter-active {
         animation: slide-in 1s ease-out forwards;
+        transition: opacity .5s;
     }
 
     .slide-leave-active {
         animation: slide-out 1s ease-out forwards;
+        transition: opacity 1s;
+        opacity: 0;
     }
 
     @keyframes slide-in {
