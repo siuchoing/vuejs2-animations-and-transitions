@@ -26,6 +26,14 @@
                 >
                     <div class="alert alert-info" v-if="show">Bounce and Shake Animation</div>
                 </transition>
+                <!-- out-in: let old element animate out first and then animate in the new one; -->
+                <!-- in-out: does the opposite -->
+                <!-- if reload page, this bottom div now first fades out before the new one fades -->
+                <transition :name="alertAnimation" mode="out-in">
+                    <!-- adding unique key to avoid jumping -->
+                    <div class="alert alert-info" v-if="show" key="info">This is info message</div>
+                    <div class="alert alert-warning" v-else key="warning">This is warning message</div>
+                </transition>
             </div>
         </div>
     </div>
@@ -84,7 +92,7 @@
 
     .slide-leave-active {
         animation: slide-out 1s ease-out forwards;
-        transition: opacity 3s;
+        transition: opacity 1s;
         opacity: 0;
     }
 
