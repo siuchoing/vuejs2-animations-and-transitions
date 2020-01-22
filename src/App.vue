@@ -11,7 +11,7 @@
                     <div class="alert alert-info" v-show="show">Fade transition</div>
                 </transition>
                 <!-- Add animation type to prevent css conflict -->
-                <transition name="slide" type="animation">
+                <transition name="slide" type="animation" appear>
                     <div class="alert alert-info" v-if="show">Fade and Slide Animation</div>
                 </transition>
                 <!-- add the appear attribute to do this smoothly animates -->
