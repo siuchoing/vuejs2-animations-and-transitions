@@ -6,7 +6,7 @@
                 <hr>
                 <button class="btn btn-primary" @click="show = !show">Show Alert</button>
                 <br><br>
-                <!-- Only one element for transition-->
+                <!-- Only one element for transition, default transition type-->
                 <transition name="fade">
                     <div class="alert alert-info" v-if="show">Fade Animation</div>
                 </transition>
