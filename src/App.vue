@@ -19,7 +19,7 @@
                         enter-active-class="animated bounce"
                         leave-active-class="animated shake"
                 >
-                    <div class="alert alert-info" v-if="show">Fade Animation</div>
+                    <div class="alert alert-info" v-if="show">Bounce and Shake Animation</div>
                 </transition>
             </div>
         </div>
