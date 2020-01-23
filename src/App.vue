@@ -37,6 +37,7 @@
                 <hr>
                 <button class="btn btn-primary" @click="load = !load">Load / Remove Element</button>
                 <br><br>
+                <!-- :css="false" means don't look for css classes, to skip hook step; and "false" as boolean type -->
                 <transition
                     @before-enter="beforeEnter"
                     @enter="enter"
@@ -47,6 +48,7 @@
                     @leave="leave"
                     @after-leave="afterLeave"
                     @leave-cancelled="leaveCancelled"
+                    :css="false"
                 >
                     <div style="width: 100px; height: 100px; background-color: lightgreen;" v-if="load"></div>
                 </transition>
