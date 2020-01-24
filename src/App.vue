@@ -57,19 +57,25 @@
                     @click="selectedComponent == 'app-success-alert' ? selectedComponent = 'app-danger-alert' : selectedComponent = 'app-success-alert'"
                 >Toggle my component</button>
                 <br><br>
+                <!-- transition: does not be rendered to the DOM -->
                 <transition name="fade" mode="out-in">
                     <component :is="selectedComponent"></component>
                 </transition>
                 <hr>
                 <button class="btn btn-primary" @click="addItem">Add Item</button>
                 <br><br>
+
+                <!-- transition-group: does render a new HTML Tag -->
                 <ul class="list-group">
-                    <li
-                            class="list-group-item"
-                            v-for="(number, index) in numbers"
-                            @click="removeItem(index)"
-                            style="cursor:pointer"
-                    >{{ number }}</li>
+                    <transition-group name="slide">
+                        <li
+                                class="list-group-item"
+                                v-for="(number, index) in numbers"
+                                @click="removeItem(index)"
+                                style="cursor: pointer"
+                                :key="index">{{ number }}
+                        </li>
+                    </transition-group>
                 </ul>
             </div>
         </div>
@@ -159,11 +165,15 @@
 </script>
 
 /********************************************
+*  forwards: let element stays in finishing position
+*
 * .fade-enter: is attached for one frame at the beginning
 * .fade-enter-active: is attached for the whole, at each element in animation time
 * .fade where default opacity = 1
 * .ease-out: end a bit slower
-* .forwards: let element stays in finishing position
+*
+* .slide-leave-active: is the class attached to the element which is removed during
+* .slide-move: is attached to any element which needs to change its place (e.g. need to move up when deleting element)
 ********************************************/
 <style>
 /* ---------- With named transition ---------- */
@@ -198,10 +208,20 @@
         transition: opacity .5s;
     }
 
+    .slide-leave {
+
+    }
+
     .slide-leave-active {
         animation: slide-out 1s ease-out forwards;
         transition: opacity 1s;
         opacity: 0;
+        position: absolute;  /* To prevent snapping and make sure that other elements may move above this element */
+    }
+
+    .slide-move {
+        /*when vuejs uses translateX or translateY, whenever that happens, animate it over one second*/
+        transition: transform 1s;
     }
 
     @keyframes slide-in {
